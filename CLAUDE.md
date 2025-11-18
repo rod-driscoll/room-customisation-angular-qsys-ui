@@ -152,6 +152,7 @@ Q-SYS component names referenced in code:
 
 - `Status` - Core status component
 - `Room Controls` - Room control component
+- `UCI Text Helper` - Locale text component
 
 These must match the component names in the Q-SYS Designer file.
 
@@ -173,3 +174,64 @@ The application uses Angular's modern signals API for reactive state management.
 ## Notes for AI Assistants
 
 This file provides context about the project structure and conventions to help AI assistants better understand and work with the codebase.
+
+## Instructions for creating base UI
+
+### Layout and aspect
+
+The primary layout is a 16:9 aspect ratio screen of 1920x1080 pixels.
+This design needs to be reactive and support different size and aspect ratios.
+
+The layout will be modelled from images in ./public/assets/images/screenshots/
+
+Wherever possible use colors from ./src/style.css
+
+### Text and locale
+
+Most of the text items are bound to the Q-SYS component "UCI Text Helper".
+
+The language selector is a component that is displayed in the top left of all pages, the text displayed is bound to the Q-SYS component "UCI Text Helper" LanguageSelect.String.
+When the language selector is pressed display a list of languages as shown in  ./public/assets/images/screenshots/Language selector.png.
+The languages to display are contained in LanguageSelect.Choices.
+
+### Images and icons
+
+Whenever icons are used, use the closest matching icons from https://fonts.google.com/icons.
+If no matching icons can be found suggest alternatives.
+
+### Pages
+
+a Description of the pages and their contents are as follows:
+
+1. 'Splash page', represented by ./public/assets/images/screenshots/Splash page.png, display this page on load.
+   1. The center image is ./public/images/communities-logo.png
+   2. When any other part of the splash page is pressed navigate to the base page.
+   3. The text at the bottom is bound to the Q-SYS component "UCI Text Helper" SplashText.String.
+2. 'Base page', represented by ./public/assets/images/screenshots/Base.png, display this page on load.
+   1. Most 'cards' become visible overlaying this page
+   2. When the system is powered off then close this page and display the splash page
+   3. The text at the bottom left of this page is bound to the Q-SYS component "UCI Text Helper" RoomName.String.
+   4. The text at the top centre of this page is the 'Current card'; indexed from the Q-SYS component "UCI Text Helper" PageNames, where the current page is stored in this project.
+   5. The icons at the top right are for selecting cards on the base page. Use icons from https://fonts.google.com/icons.
+   Pressing each icon will cause a card to display on the base page.
+   6. The icons at the top right are as follows
+      1. Home
+      2. Cameras
+      3. Help
+      4. Power
+   The first 3 icons are mutually exclusive; referenced from the Q-SYS component "UCI Text Helper" PageNames, so when they are pressed the associated card appears and the other cards close, and the 'Current card' text changes to the PageName.
+   The 4th icon is power, when it is pressed the Power card is displayed over the top of all other pages.
+3. Volume control is at the bottom right of the Base page.
+   1. The + symbol is linked to the Q-SYS component "Room Controls" VolumeUpDown[1].Boolean.
+   2. The - symbol is linked to the Q-SYS component "Room Controls" VolumeUpDown[2].Boolean.
+   3. The microphone symbol is linked to the Q-SYS component "Room Controls" VolumeMute.Boolean.
+   4. The bar graph between - and + is linked to the Q-SYS component "Room Controls" VolumeFader.Value.
+4. Home card - displayed on the Base page when the Home icon is pressed. The Home card has 3 buttons for video source selection.
+   1. The names under the source selection buttons are linked to the Q-SYS component "UCI Text Helper" SourceNames.
+   2. The buttons are linked to the Q-SYS component "HDMISourceSelect_1". Pressing each button sets HDMISourceSelect_1[('selector.%0d'):format(index)].Boolean true, where 'index' is a refeernce to which button was pressed starting at zero.
+5. Cameras card - displayed on the Base page when the Camera icon is pressed. The buttons on the card are linked to the Q-SYS component "USB Video Bridge Core". Bind the buttons with controls on the component with similar names.
+6. Power card - displayed on the Base page when the power icon is pressed.
+   1. Link the top text with the Q-SYS component "UCI Text Helper" ShutdownPrompt.String.
+   2. The green button is the ShutdownYes button, link it with the Q-SYS component "Room Controls" SystemOff.Boolean. The text on the button is bound to the Q-SYS component "UCI Text Helper" ShutdownYes.String.
+   3. The red button is the ShutdownNo button, when pressed close the Power card. The text on the button is bound to the Q-SYS component "UCI Text Helper" ShutdownNo.String.
+7. Help card - displayed on the Base page when the help icon is pressed. The text items on this page should be linked with matching items in the Q-SYS component "UCI Text Helper"
