@@ -1,10 +1,7 @@
-<div class="app">
-  <div class="app__header">
-    <img class="app__header--logo" src="/assets/images/logo/q-sys-logo.svg" />
-
-    <span>|</span> Room Customisation Angular Q-SYS UI
-  </div>
-
-  <div class="app__body">
-  </div>
+<div class="app-container">
+  @if (showSplash()) {
+    <app-splash-page (onNavigateToBase)="navigateToBase()"></app-splash-page>
+  } @else {
+    <app-base-page></app-base-page>
+  }
 </div>

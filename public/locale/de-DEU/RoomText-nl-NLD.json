@@ -1,0 +1,14 @@
+{
+  "Sources": ["Quelle Eins", "Quelle Zwei", "Quelle Drei"],
+  "Pages": ["Kameras", "Hilfe", "Home"],
+  "SplashText": "Zum Beginnen berühren",
+  "VideoPrivacyPrompt": "Video Privacy",
+  "ZoomInPrompt": "Zoom In",
+  "ZoomOutPrompt": "Zoom Out",
+  "HelpText": "Hast du versucht es aus und wieder an zu schalten? Falls das nicht funktioniert benutze bitte die Kontaktinformationen weiter unten.",
+  "HelpPhonePrompt": "Hilfe anfragen:",
+  "HelpEmailPrompt": "Email um Probleme zu melden:",
+  "ShutdownPrompt": "Sicher dass du das System herunterfahren möchtest?",
+  "ShutdownYes": "Ja, fahre das System herunter.",
+  "ShutdownNo": "Nein, Abbruch."
+}

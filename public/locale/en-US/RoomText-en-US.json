@@ -1,0 +1,14 @@
+{
+  "Sources": ["Source One", "Source Two", "Source Three"],
+  "Pages": ["Cameras", "Help", "Home"],
+  "SplashText": "Touch to Begin",
+  "VideoPrivacyPrompt": "Video Privacy",
+  "ZoomInPrompt": "Zoom In",
+  "ZoomOutPrompt": "Zoom Out",
+  "HelpText": "Have you tried turning it off and on again? If that doesn't work, please use the contact information below.",
+  "HelpPhonePrompt": "Call For Assistance:",
+  "HelpEmailPrompt": "Email to Report Issues:",
+  "ShutdownPrompt": "Are You Sure You Want to Shut Down the System?",
+  "ShutdownYes": "Yes, Shut System Down",
+  "ShutdownNo": "No, Cancel"
+}

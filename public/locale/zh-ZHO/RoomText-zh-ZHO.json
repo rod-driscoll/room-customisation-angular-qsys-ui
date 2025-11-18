@@ -1,0 +1,14 @@
+{
+  "Sources": ["信号源 1", "信号源 2", "信号源 3"],
+  "Pages": ["摄像机", "帮助", "首页"],
+  "SplashText": "点击开始",
+  "VideoPrivacyPrompt": "隐私模式",
+  "ZoomInPrompt": "放大",
+  "ZoomOutPrompt": "缩小",
+  "HelpText": "您是否尝试过将其关闭并重新打开？如果这不起作用，请使用下面的联系信息",
+  "HelpPhonePrompt": "致电寻求帮助:",
+  "HelpEmailPrompt": "发送电子邮件报告此问题:",
+  "ShutdownPrompt": "确定要关闭系统吗？",
+  "ShutdownYes": "是的，关闭系统",
+  "ShutdownNo": " 取消 "
+}

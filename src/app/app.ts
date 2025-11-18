@@ -1,23 +1,27 @@
 // Import Angular core functionality and lifecycle hooks
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, effect } from '@angular/core';
 // Import our custom QRWC service for Q-SYS communication
 import { QrwcAngularService } from './services/qrwc-angular-service';
+import { SplashPage } from './components/splash-page/splash-page';
+import { BasePage } from './components/base-page/base-page';
 
 //import { RouterOutlet } from '@angular/router';
-
-// Import UI components
 
 @Component({
   selector: 'app-root',
   imports: [
-    //RouterOutlet
+    SplashPage,
+    BasePage
   ],
   templateUrl: './app.html',
-  styleUrl: './app.css', // SCSS styles file
+  styleUrl: './app.css',
 })
 export class App {
   // Signal to store the application title (reactive state)
   protected readonly title = signal('room-customisation-angular-qsys-ui');
+
+  // Signal to track which page to show (splash or base)
+  readonly showSplash = signal(true);
   
   // Default IP address for the Q-SYS Core 
   // Change this to match your Core's actual IP address if different
@@ -27,6 +31,32 @@ export class App {
   // Inject the QRWC service using Angular's dependency injection
   // This gives us access to Q-SYS Core communication throughout the app
   readonly qrwcService = inject(QrwcAngularService);
+
+  constructor() {
+    // Monitor system power state and show splash when powered off
+    effect(() => {
+      const component = this.qrwcService.components()?.['Room Controls'];
+      if (!component) return;
+
+      const systemOffControl = component.controls['SystemOff'];
+      if (!systemOffControl) return;
+
+      // If system is powered off, show splash page
+      if (systemOffControl.state.Bool) {
+        this.showSplash.set(true);
+      }
+
+      systemOffControl.on('update', (state) => {
+        if (state.Bool) {
+          this.showSplash.set(true);
+        }
+      });
+    });
+  }
+
+  navigateToBase(): void {
+    this.showSplash.set(false);
+  }
 
   /**
    * Angular lifecycle hook - called after the component is initialized

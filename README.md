@@ -82,6 +82,14 @@ For more information on using the Angular CLI, including detailed command refere
    2. using query parameters in the host url.
     `http://<host-address>?host=<core-address>`
 
+### Changes to the Q-SYS design
+
+To make the project work the following needs to be done to the Q-SYS design after pulling it from the repo.
+
+1. Change the code script access of the USB camera object to 'External' or 'All'.
+2. Change the code script access of the 'UCI Text Helper' object to 'All'.
+3. I did not test on a NV32 so the HDMI IO Core was not available, therefore I added a router and gave it External Script Access ID 'HDMISourceSelect_1'
+
 ## Authors
 
 * Rod Driscoll <rod@theavitgroup.com.au>

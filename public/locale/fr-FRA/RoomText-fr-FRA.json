@@ -1,0 +1,14 @@
+{
+  "Sources": ["Source 1", "Source 2", "Source 3"],
+  "Pages": ["Caméra", "Aide", "Accueil"],
+  "SplashText": "Toucher pour commencer",
+  "VideoPrivacyPrompt": "Confidentialité vidéo",
+  "ZoomInPrompt": "Zoomer",
+  "ZoomOutPrompt": "Dézoomer",
+  "HelpText": "Avez-vous essayé d'éteindre et de rallumer le PC? Si cela ne fonctionne pas, veuillez utiliser les coordonnées ci-dessous.",
+  "HelpPhonePrompt": "Appeler à l'aide:",
+  "HelpEmailPrompt": "Envoyer un e-mail:",
+  "ShutdownPrompt": "Êtes-vous sûr de vouloir arrêter le système?",
+  "ShutdownYes": "Oui, arrêter le système",
+  "ShutdownNo": "Non, annuler"
+}

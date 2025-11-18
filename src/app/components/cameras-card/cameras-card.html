@@ -1,0 +1,16 @@
+<div class="cameras-card container">
+  <div class="camera-controls-grid">
+    @for (control of cameraControls; track control.controlName) {
+      <button
+        class="camera-control-btn"
+        (mousedown)="activateControl(control.controlName)"
+        (mouseup)="deactivateControl(control.controlName)"
+        (mouseleave)="deactivateControl(control.controlName)"
+        (touchstart)="activateControl(control.controlName)"
+        (touchend)="deactivateControl(control.controlName)">
+        <span class="material-icons">{{ control.icon }}</span>
+        <span class="control-label">{{ control.name }}</span>
+      </button>
+    }
+  </div>
+</div>

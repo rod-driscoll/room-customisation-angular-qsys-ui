@@ -1,0 +1,18 @@
+<div class="language-selector">
+  <button class="language-button button-transparent" (click)="toggleLanguageList()">
+    {{ currentLanguage() }}
+  </button>
+
+  @if (showLanguageList()) {
+    <div class="language-list bg-light">
+      @for (language of availableLanguages(); track language) {
+        <button
+          class="language-option"
+          [class.selected]="language === currentLanguage()"
+          (click)="selectLanguage(language)">
+          {{ language }}
+        </button>
+      }
+    </div>
+  }
+</div>

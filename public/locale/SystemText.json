@@ -1,0 +1,14 @@
+{
+  "RoomName": "Example Room",
+  "HelpPhone": "(555) 555-5555",
+  "HelpEmail": "help@example.com",
+  "DefaultLanguage": "English",
+  "Languages": {
+    "Chinese/中文": "zh-ZHO",
+    "Deutsch": "nl-NLD",
+    "English": "en-US",
+    "Français": "fr-FA",
+    "Spanish": "es-SPA",
+    "Portuguese": "pt-POR"
+  }
+}

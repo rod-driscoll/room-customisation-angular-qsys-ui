@@ -1,0 +1,36 @@
+.cameras-card {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 2rem auto;
+}
+
+.camera-controls-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.camera-control-btn {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.camera-control-btn:active {
+  transform: scale(0.95);
+}
+
+.camera-control-btn .material-icons {
+  font-size: 3rem;
+}
+
+.control-label {
+  font-size: 0.9rem;
+  text-align: center;
+}

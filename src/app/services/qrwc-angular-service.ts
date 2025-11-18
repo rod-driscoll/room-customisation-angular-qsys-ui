@@ -46,9 +46,10 @@ export class QrwcAngularService {
         socket,
         pollingInterval: pollingInterval,
         // Optional filter to only include components we care about.
-        /*componentFilter: (componentState) => {
-          return ['Status','Room Status'].includes(componentState.Name);
-        }*/
+        componentFilter: (componentState) => {
+          //return ['Status','Room Controls','UCI Text Helper','HDMISourceSelect_1'].includes(componentState.Name);
+          return ['Status','Room Controls','UCI Text Helper','HDMISourceSelect_1'].includes(componentState.Name);
+        }
       });
     } catch (err) {
       console.error('❌ QRWC - Connection failed:', err);
@@ -70,13 +71,23 @@ export class QrwcAngularService {
     this.components.set(qrwc.components);
 
     console.log(`🔍 QRWC - Available components:`, Object.keys(qrwc.components));
-    // console.log(`🔧 QRWC - Pink Noise Controls:`, Object.keys(qrwc.components['Pink_Noise_Generator'].controls));
-    // console.log(`📊 QRWC - Pink Noise Control:`, Object.keys(qrwc.components['Pink_Noise_Generator'].controls['level']));
-    // console.log(`📊 QRWC - Pink Noise Level:`, qrwc.components['Pink_Noise_Generator'].controls['level'].state);
+    //console.log(`🔧 QRWC - "Room Controls" Controls:`, Object.keys(qrwc.components['Room Controls'].controls));
+    // console.log(`📊 QRWC - "Room Controls" Control:`, Object.keys(qrwc.components['Room Controls'].controls['SystemPower']));
+    // console.log(`📊 QRWC - "Room Controls" Level:`, qrwc.components['Room Controls'].controls['Status'].state);
 
     // Listen for any control value updates from Q-SYS and log them
     qrwc.on('update', (component, control, state) => {
-      console.log('📊 QRWC - Control Update:', `${component.name}.${control.name}`, state);
+      let sysControlNames = [    
+        /^log\.\w+/,      // Matches log. followed by one or more word chars
+        /^script\.\w+/,   // Matches script. followed by one or more word chars
+        /^halt\.\w+/,     // Matches halt. followed by one or more word chars
+        /^magic\.number/, // Matches exact "magic.number"
+        /^reload/         // Matches anything starting with "reload"
+      ];
+      if(sysControlNames.some(regex => regex.test(control.name))) {
+        return; // Ignore system controls
+      }
+      console.log('📊 QRWC - Control Update:', `"${component.name}".${control.name}`, state);
     });
 
     // Listen for any errors from the QRWC connection

@@ -41,8 +41,8 @@ v1.1 Rod Driscoll<rod@theavitgroup.com.au>
 
 button {
     background-color: var(--PrimaryColorLight);
-    -qsc-icon-font: "Phosphor";
-    -qsc-icon-color: var(--DarkGreyColor);
+    /* -qsc-icon-font: "Phosphor";
+    -qsc-icon-color: var(--DarkGreyColor); */
     color: var(--DarkGreyColor);
     font-family: var(--MyFont);
     font-size: 22 vmin;

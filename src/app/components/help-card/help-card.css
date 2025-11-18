@@ -1,0 +1,41 @@
+.help-card {
+  padding: 2.5rem 3rem;
+  max-width: 750px;
+  margin: 1rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  border-radius: var(--BorderRadius);
+}
+
+.help-intro {
+  font-size: 1.3rem;
+  line-height: 1.5;
+  color: var(--DarkGreyColor);
+  font-weight: normal;
+}
+
+.help-contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.help-contact-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2rem;
+  align-items: baseline;
+}
+
+.help-label {
+  font-weight: bold;
+  color: var(--DarkColor);
+  font-size: 1.1rem;
+  white-space: nowrap;
+}
+
+.help-value {
+  color: var(--DarkColor);
+  font-size: 1.1rem;
+}

@@ -1,0 +1,69 @@
+<div class="base-page bg-light">
+  <!-- Top Left: Language Selector -->
+  <div class="top-left">
+    <app-language-selector></app-language-selector>
+  </div>
+
+  <!-- Top Center: Current Page Name -->
+  <div class="top-center">
+    <div class="txt-page-name">{{ getCurrentPageName() }}</div>
+  </div>
+
+  <!-- Top Right: Navigation Icons -->
+  <div class="top-right">
+    <button
+      class="nav-icon button-transparent"
+      [class.active]="currentPage() === 'home'"
+      (click)="navigateToPage('home')">
+      <span class="material-icons">home</span>
+    </button>
+
+    <button
+      class="nav-icon button-transparent"
+      [class.active]="currentPage() === 'cameras'"
+      (click)="navigateToPage('cameras')">
+      <span class="material-icons">videocam</span>
+    </button>
+
+    <button
+      class="nav-icon button-transparent"
+      [class.active]="currentPage() === 'help'"
+      (click)="navigateToPage('help')">
+      <span class="material-icons">help</span>
+    </button>
+
+    <button
+      class="nav-icon button-transparent power-icon"
+      (click)="togglePowerCard()">
+      <span class="material-icons">power_settings_new</span>
+    </button>
+  </div>
+
+  <!-- Bottom Left: Room Name -->
+  <div class="bottom-left">
+    <div class="txt-room-name">{{ roomName() }}</div>
+  </div>
+
+  <!-- Bottom Right: Volume Control -->
+  <div class="bottom-right">
+    <app-volume-control></app-volume-control>
+  </div>
+
+  <!-- Main Content Area: Cards -->
+  <div class="main-content">
+    @if (currentPage() === 'home') {
+      <app-home-card></app-home-card>
+    }
+    @if (currentPage() === 'cameras') {
+      <app-cameras-card></app-cameras-card>
+    }
+    @if (currentPage() === 'help') {
+      <app-help-card></app-help-card>
+    }
+  </div>
+
+  <!-- Power Card Overlay -->
+  @if (showPowerCard()) {
+    <app-power-card (onClose)="closePowerCard()"></app-power-card>
+  }
+</div>

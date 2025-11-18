@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(netstat:*)",
-      "Bash(findstr:*)"
+      "Bash(findstr:*)",
+      "Bash(ng generate:*)",
+      "Bash(npm run build:*)"
     ],
     "deny": [],
     "ask": []
