@@ -1,1 +1,1327 @@
-/* You can add global styles to this file, and also import other style files */
+/* Communities CSS File
+Intended for Use with Example Files
+Created by Hope Roth - Q-SYS 
+Version 1.0 - Initial Build September, 2024 
+
+v1.1 Rod Driscoll<rod@theavitgroup.com.au>
+- Modified to work with Angular projects
+- changed assets path for fonts and logo
+- commented out custom -qsc specific properties
+    - TODO: Uncomment and replace -qsc specific properties with standard CSS properties where possible
+*/
+
+@font-face {
+    font-family: "Phosphor";
+    src: url(/public/assets/fonts/Phosphor.ttf);
+}
+
+:root {
+    --DarkColor: #2c3740;
+    --LightColor: #ffffff;
+    --DarkGreyColor: #404040;
+    --MediumGreyColor: #616262;
+    --LightGreyColor: #e6e9ed;
+    --PrimaryColor: #0076bf;
+    --PrimaryColorLight: #72aad8;
+    --PrimaryColorDark: #103b5b;
+    --Color2: #842462;
+    --Color2Light: #c48ab2;
+    --Color3: #719e1b;
+    --Color3Light: #c0d39f;
+    --Color4: #d6a836;
+    --Color4Light: #f7e2be;
+    --Color5: #324175;
+    --Color5Light: #a3b1d1;
+    --StopColor: #b40f00;
+    --GoColor: #719e1b;
+    --BorderDecoration: 3px;
+    --BorderRadius: 6px;
+    --MyFont: "Open Sans";
+}
+
+button {
+    background-color: var(--PrimaryColorLight);
+    -qsc-icon-font: "Phosphor";
+    -qsc-icon-color: var(--DarkGreyColor);
+    color: var(--DarkGreyColor);
+    font-family: var(--MyFont);
+    font-size: 22 vmin;
+    border-radius: var(--BorderRadius);
+    border: var(--BorderDecoration) var(--Color5);
+}
+
+button:value(1) {
+    background-color: var(--Color4);
+    -qsc-icon-color: var(--LightColor);
+    color: var(--LightColor);
+}
+
+combobox {
+    font-style: normal;
+    color: var(--DarkColor);
+    font-family: var(--MyFont);
+    font-size: 22 vmin;
+    border-color: var(--PrimaryColorLight);
+    border-width: var(--BorderDecoration);
+    border-radius: var(--BorderRadius);
+}
+
+fader {
+    /* -qsc-render-style: layer;
+    -qsc-fader-slot-class: fader-slot;
+    -qsc-fader-slot-width: 16px;
+    -qsc-fader-cap-class: fader-cap;
+    -qsc-fader-cap-height: 50vmin;
+    -qsc-fader-cap-width: 50vmin; */
+    border-radius: 10px;
+    border-width: 0px;
+    background-color: transparent;
+    margin: 0px;
+    padding: 2px;
+}
+
+fader.vertical {
+    /* -qsc-fader-cap-width: 20vw;
+    -qsc-fader-cap-height: 20vw; */
+}
+
+fader.horizontal {
+    /* -qsc-fader-cap-width: 20vh;
+    -qsc-fader-cap-height: 20vh; */
+}
+
+.fader-slot {
+    background-color: var(--DarkGreyColor);
+    border-width: 0px;
+    border-radius: 8px;
+}
+
+.fader-slot:value(1) {
+    background-color: var(--Color2);
+}
+
+.fader-cap {
+    background-color: var(--Color2Light);
+    border-color: var(--MediumGreyColor);
+    border-width: 12px;
+    border-radius: 300px;
+}
+
+meter {
+    /* -qsc-render-style: layer;
+    -qsc-meter-indicator-class: meter-indicator; */
+    background-color: transparent;
+    border: var(--BorderDecoration) var(--Color3Dark);
+    /* -qsc-meter-indicator-width: 98vw;
+    -qsc-meter-indicator-height: 90vh; */
+}
+
+.meter-indicator {
+    background-color: var(--LightColor);
+    border: var(--BorderDecoration) var(--DarkColor);
+    border-radius: 18px;
+}
+
+.meter-indicator:value(1) {
+    background-color: var(--Color2Light);
+}
+
+header {
+    color: var(--PrimaryColor);
+    background-color: transparent;
+    /* -qsc-font-style: semibold; */
+    text-align: left;
+    font-family: var(--MyFont);
+    font-size: 18 vmin;
+}
+
+page {
+    background-color: var(--LightGreyColor);
+    border-width: 0px;
+}
+
+led {
+    border-width: 0px;
+    background-color: var(--StopColor);
+}
+
+led:value(1) {
+    background-color: var(--GoColor);
+}
+
+textblock {
+    background-color: transparent;
+    color: var(--DarkGreyColor);
+    font-family: var(--MyFont);
+    font-size: 22vmin;
+    margin: 0px;
+}
+
+textbox {
+    color: var(--DarkGreyColor);
+    font-family: var(--MyFont);
+    font-size: 32vmin;
+    margin: 0px;
+}
+
+textfield {
+    background-color: transparent;
+    color: var(--DarkGreyColor);
+    font-family: var(--MyFont);
+    font-size: 40vmin;
+    margin: 0px;
+}
+
+.logo {
+    background-image: url(/public/assets/images/communities-logo.png);
+    background-size: auto;
+    border-width: 0px;
+}
+
+.button-cancel {
+    background-color: var(--StopColor);
+    /* -qsc-icon-color: var(--LightColor); */
+    color: var(--LightColor);
+    border-width: 0px;
+    font-size: 22vmin;
+}
+
+.button-go {
+    background-color: var(--GoColor);
+    -qsc-icon-color: var(--LightColor);
+    color: var(--LightColor);
+    border-width: 0px;
+    font-size: 22vmin;
+}
+
+.button-stop {
+    background-color: transparent;
+    /* -qsc-icon-color: var(--DarkGreyColor); */
+    border-width: 0px;
+}
+
+.button-stop:value(1) {
+    background-color: transparent;
+    /* -qsc-icon-color: var(--StopColor); */
+}
+
+.button-splash {
+    background-color: var(--MediumGreyColor);
+    border-width: var(--BorderDecoration);
+    border-color: var(--LightColor);
+    border-radius: 0px;
+}
+
+.button-transparent {
+    border-width: 0px;
+    background-color: transparent;
+    color: var(--Color2);
+    /* -qsc-icon-color: var(--Color2); */
+}
+
+.button-transparent:value(1) {
+    border-width: 0px;
+    background-color: transparent;
+    color: var(--Color2);
+    /* -qsc-icon-color: var(--Color2); */
+}
+
+.button-left {
+    border: var(--BorderDecoration);
+    border-color: var(--MediumGreyColor);
+    border-radius: 10px 0px 0px 10px;
+}
+
+.button-right {
+    border: var(--BorderDecoration);
+    border-color: var(--MediumGreyColor);
+    border-radius: 0px 10px 10px 0px;
+}
+
+.bg-light {
+    border-radius: 0px;
+    background-color: var(--LightColor);
+    border-color: var(--LightGreyColor);
+    border-width: var(--BorderDecoration);
+}
+
+.bottombar-bg {
+    border-radius: 0px;
+    background-color: var(--MediumGreyColor);
+    border-color: var(--LightColor);
+    border-width: var(--BorderDecoration);
+}
+
+.container {
+    border-radius: 6px;
+    border-width: 3px;
+    border-color: var(--LightColor);
+    background: linear-gradient(2700deg, var(--LightGreyColor), var(--LightColor));
+}
+
+.sidebar-bg {
+    background-color: var(--LightGreyColor);
+    border-left-color: var(--Color2);
+    border-left-width: var(--BorderDecoration);
+}
+
+.scrim {
+    background-color: var(--MediumGreyColor);
+    opacity: 0.9;
+    border-radius: 0px;
+    border-width: 0px;
+}
+
+.splash-prompt {
+    background-color: var(--PrimaryColor);
+    border-width: var(--BorderDecoration);
+    border-color: var(--LightColor);
+    color: var(--LightColor);
+    font-size: 25vmin;
+    content: "Touch Screen to Continue";
+    margin: 0px;
+}
+
+.txt-announcement {
+    font-style: bold;
+    background-color: transparent;
+    font-size: 36vmin;
+    text-align: center;
+    padding: 10px;
+    color: var(--StopColor);
+}
+
+.txt-highlight {
+    font-style: bold;
+    background-color: transparent;
+    border: 0px transparent;
+    font-size: 48vmin;
+    text-align: center;
+    color: var(--StopColor);
+}
+
+.txt-header {
+    font-style: bold;
+    background-color: transparent;
+    border: 0px transparent;
+    font-size: 42vmin;
+    text-align: left;
+    padding: 10px;
+    color: var(--Color5);
+}
+
+.txt-page-name {
+    font-style: bold;
+    background-color: transparent;
+    border: 0px transparent;
+    font-size: 48vmin;
+    text-align: center;
+    padding: 10px;
+    color: var(--Color5);
+}
+
+.txt-room-name {
+    font-style: bold;
+    background-color: transparent;
+    border: 0px transparent;
+    font-size: 48vmin;
+    text-align: left;
+    padding: 10px;
+    color: var(--DarkColor);
+}
+
+.txt-source-name {
+    /* -qsc-font-style: semibold; */
+    background-color: transparent;
+    border: 0px transparent;
+    font-size: 36vmin;
+    text-align: center;
+    padding: 4px;
+    color: var(--DarkColor);
+}
+
+.txt-subheader {
+    /* -qsc-font-style: semibold; */
+    background-color: transparent;
+    border: 0px transparent;
+    font-size: 4vw;
+    text-align: left;
+    padding: 10px;
+    color: var(--DarkGreyColor);
+}
+
+.txt-label {
+    font-style: normal;
+    background-color: transparent;
+    border: 0px transparent;
+    font-size: 32vmin;
+    text-align: left;
+    padding: 10px;
+    color: var(--DarkColor);
+}
+
+.txt-label-bold {
+    font-style: bold;
+    background-color: transparent;
+    border: 0px transparent;
+    font-size: 32vmin;
+    text-align: left;
+    padding: 10px;
+    color: var(--DarkColor);
+}
+
+.txt-label-2 {
+    font-style: normal;
+    background-color: transparent;
+    border: 0px transparent;
+    font-size: 24vmin;
+    text-align: center;
+    padding: 10px;
+    color: var(--DarkColor);
+}
+
+.padding-small {
+    padding: 2px;
+}
+
+.padding-medium {
+    padding: 8px;
+}
+
+.padding-large {
+    padding: 16px;
+}
+
+/* 
+.icon-activity {
+    -qsc-icon: \f230;
+}
+
+.icon-address-book {
+    -qsc-icon: \f231;
+}
+
+.icon-airplay {
+    -qsc-icon: \f237;
+}
+
+.icon-alarm {
+    -qsc-icon: \f238;
+}
+
+.icon-alert {
+    -qsc-icon: \f62c;
+}
+
+.icon-alert-alt {
+    -qsc-icon: \f34b;
+}
+
+.icon-alien {
+    -qsc-icon: \f239;
+}
+
+.icon-anchor {
+    -qsc-icon: \f247;
+}
+
+.icon-android {
+    -qsc-icon: \f248;
+}
+
+.icon-angle-down {
+    -qsc-icon: \f31a;
+}
+
+.icon-angle-left {
+    -qsc-icon: \f31b;
+}
+
+.icon-angle-right {
+    -qsc-icon: \f31c;
+}
+
+.icon-angle-up {
+    -qsc-icon: \f31d;
+}
+
+.icon-app-window {
+    -qsc-icon: \f24c;
+}
+
+.icon-apple {
+    -qsc-icon: \f24d;
+}
+
+.icon-arrow-clockwise {
+    -qsc-icon: \f2a1;
+}
+
+.icon-arrow-counter-clockwise {
+    -qsc-icon: \f2a2;
+}
+
+.icon-arrow-down {
+    -qsc-icon: \f269;
+}
+
+.icon-arrow-down-left {
+    -qsc-icon: \f26a;
+}
+
+.icon-arrow-down-right {
+    -qsc-icon: \f26b;
+}
+
+.icon-arrow-left {
+    -qsc-icon: \f282;
+}
+
+.icon-arrow-right {
+    -qsc-icon: \f28b;
+}
+
+.icon-arrow-up {
+    -qsc-icon: \f29e;
+}
+
+.icon-arrow-up-left {
+    -qsc-icon: \f29f;
+}
+
+.icon-arrow-up-right {
+    -qsc-icon: \f2a0;
+}
+
+.icon-arrows-leftright {
+    -qsc-icon: \f2aa;
+}
+
+.icon-arrows-updown {
+    -qsc-icon: \f2a3;
+}
+
+.icon-asterisk {
+    -qsc-icon: \f2b4;
+}
+
+.icon-at {
+    -qsc-icon: \f2b6;
+}
+
+.icon-atom {
+    -qsc-icon: \f2b7;
+}
+
+.icon-audio {
+    -qsc-icon: \f3d7;
+}
+
+.icon-back {
+    -qsc-icon: \f253;
+}
+
+.icon-battery-full {
+    -qsc-icon: \f2c9;
+}
+
+.icon-battery-low {
+    -qsc-icon: \f2cb;
+}
+
+.icon-battery-medium {
+    -qsc-icon: \f2cc;
+}
+
+.icon-bell-ringing {
+    -qsc-icon: \f2d4;
+}
+
+.icon-block {
+    -qsc-icon: \f53d;
+}
+
+.icon-bluetooth {
+    -qsc-icon: \f2df;
+}
+
+.icon-bluetooth-connected {
+    -qsc-icon: \f2e0;
+}
+
+.icon-bluetooth-x {
+    -qsc-icon: \f2e2;
+}
+
+.icon-bluray {
+    -qsc-icon: \f3a3;
+}
+
+.icon-boat {
+    -qsc-icon: \f2e3;
+}
+
+.icon-bolt {
+    -qsc-icon: \f48b;
+}
+
+.icon-books {
+    -qsc-icon: \f2eb;
+}
+
+.icon-brightness-high {
+    -qsc-icon: \f5c0;
+}
+
+.icon-brightness-low {
+    -qsc-icon: \f5c1;
+}
+
+.icon-bug {
+    -qsc-icon: \f2f9;
+}
+
+.icon-building {
+    -qsc-icon: \f2fb;
+}
+
+.icon-calculator {
+    -qsc-icon: \f300;
+}
+
+.icon-calendar {
+    -qsc-icon: \f301;
+}
+
+.icon-call {
+    -qsc-icon: \f51c;
+}
+
+.icon-call-active {
+    -qsc-icon: \f51c;
+}
+
+.icon-call-end {
+    -qsc-icon: \f51d;
+}
+
+.icon-call-incoming {
+    -qsc-icon: \f51e;
+}
+
+.icon-call-outgoing {
+    -qsc-icon: \f51f;
+}
+
+.icon-call-x {
+    -qsc-icon: \f521;
+}
+
+.icon-camera {
+    -qsc-icon: \f306;
+}
+
+.icon-cancel {
+    -qsc-icon: \f644;
+}
+
+.icon-cast {
+    -qsc-icon: \f563;
+}
+
+.icon-chalkboard {
+    -qsc-icon: \f328;
+}
+
+.icon-chart {
+    -qsc-icon: \f32c;
+}
+
+.icon-chat {
+    -qsc-icon: \f332;
+}
+
+.icon-check {
+    -qsc-icon: \f33e;
+}
+
+.icon-checkbox {
+    -qsc-icon: \f551;
+}
+
+.icon-checkbox:value(1) {
+    -qsc-icon: \f340;
+}
+
+.icon-circle {
+    -qsc-icon: \f343;
+}
+
+.icon-clear {
+    -qsc-icon: \f603;
+}
+
+.icon-clock {
+    -qsc-icon: \f351;
+}
+
+.icon-close {
+    -qsc-icon: \f642;
+}
+
+.icon-closed-captioning {
+    -qsc-icon: \f355;
+}
+
+.icon-code {
+    -qsc-icon: \f363;
+}
+
+.icon-coffee {
+    -qsc-icon: \f367;
+}
+
+.icon-combined {
+    -qsc-icon: \f551;
+}
+
+.icon-combined-status {
+    -qsc-icon: \f5af;
+}
+
+.icon-combined-status:value(1) {
+    -qsc-icon: \f551;
+}
+
+.icon-combining {
+    -qsc-icon: \f372;
+}
+
+.icon-computer {
+    -qsc-icon: \f393;
+}
+
+.icon-connected-tv {
+    -qsc-icon: \f4c3;
+}
+
+.icon-couch {
+    -qsc-icon: \f252;
+}
+
+.icon-day {
+    -qsc-icon: \f360;
+}
+
+.icon-delete {
+    -qsc-icon: \f2ba;
+}
+
+.icon-disconnect {
+    -qsc-icon: \f51d;
+}
+
+.icon-display {
+    -qsc-icon: \f392;
+}
+
+.icon-door {
+    -qsc-icon: \f3a7;
+}
+
+.icon-download {
+    -qsc-icon: \f3b2;
+}
+
+.icon-dropdown {
+    -qsc-icon: \f316;
+}
+
+.icon-eject {
+    -qsc-icon: \f3bc;
+}
+
+.icon-eq {
+    -qsc-icon: \f3c1;
+}
+
+.icon-eye {
+    -qsc-icon: \f3c8;
+}
+
+.icon-eye:value(1) {
+    -qsc-icon: \f3c6;
+}
+
+.icon-fast-forward {
+    -qsc-icon: \f3d1;
+}
+
+.icon-first-aid {
+    -qsc-icon: \f3fd;
+}
+
+.icon-flag-checkered {
+    -qsc-icon: \f402;
+}
+
+.icon-gear {
+    -qsc-icon: \f42a;
+}
+
+.icon-globe {
+    -qsc-icon: \f43e;
+}
+
+.icon-graph {
+    -qsc-icon: \f44b;
+}
+
+.icon-grid {
+    -qsc-icon: \f44b;
+}
+
+.icon-groups {
+    -qsc-icon: \f622;
+}
+
+.icon-hdmi {
+    -qsc-icon: \f530;
+}
+
+.icon-headphones {
+    -qsc-icon: \f45e;
+}
+
+.icon-heart {
+    -qsc-icon: \f462;
+}
+
+.icon-help {
+    -qsc-icon: \f547;
+}
+
+.icon-hexagon {
+    -qsc-icon: \f465;
+}
+
+.icon-home {
+    -qsc-icon: \f470;
+}
+
+.icon-id {
+    -qsc-icon: \f474;
+}
+
+.icon-image {
+    -qsc-icon: \f476;
+}
+
+.icon-infinity {
+    -qsc-icon: \f477;
+}
+
+.icon-info {
+    -qsc-icon: \f478;
+}
+
+.icon-input {
+    -qsc-icon: \f28f;
+}
+
+.icon-keyboard {
+    -qsc-icon: \f47f;
+}
+
+.icon-keypad {
+    -qsc-icon: \f3a8;
+}
+
+.icon-laptop {
+    -qsc-icon: \f485;
+}
+
+.icon-layout {
+    -qsc-icon: \f486;
+}
+
+.icon-leaf {
+    -qsc-icon: \f487;
+}
+
+.icon-lightbulb {
+    -qsc-icon: \f489;
+}
+
+.icon-lights-high {
+    -qsc-icon: \f5c0;
+}
+
+.icon-lights-low {
+    -qsc-icon: \f5c2;
+}
+
+.icon-lights-medium {
+    -qsc-icon: \f5c1;
+}
+
+.icon-link {
+    -qsc-icon: \f491;
+}
+
+.icon-link-active {
+    -qsc-icon: \f48f;
+}
+
+.icon-list {
+    -qsc-icon: \f498;
+}
+
+.icon-location {
+    -qsc-icon: \f4ac;
+}
+
+.icon-lock {
+    -qsc-icon: \f4a3;
+}
+
+.icon-magic {
+    -qsc-icon: \f4a5;
+}
+
+.icon-math {
+    -qsc-icon: \f4b2;
+}
+
+.icon-meeting {
+    -qsc-icon: \f458;
+}
+
+.icon-menu {
+    -qsc-icon: \f497;
+}
+
+.icon-microphone {
+    -qsc-icon: \f4b8;
+}
+
+.icon-mics {
+    -qsc-icon: \f4ba;
+}
+
+.icon-minus {
+    -qsc-icon: \f4bf;
+}
+
+.icon-mobile-phone {
+    -qsc-icon: \f395;
+}
+
+.icon-mode {
+    -qsc-icon: \f508;
+}
+
+.icon-more {
+    -qsc-icon: \f3ae;
+}
+
+.icon-mosaic {
+    -qsc-icon: \f39c;
+}
+
+.icon-mouse {
+    -qsc-icon: \f4c8;
+}
+
+.icon-movie {
+    -qsc-icon: \f3f5;
+}
+
+.icon-music {
+    -qsc-icon: \f4cb;
+}
+
+.icon-music-alt {
+    -qsc-icon: \f4c9;
+}
+
+.icon-night {
+    -qsc-icon: \f35c;
+}
+
+.icon-map {
+    -qsc-icon: \f4ad;
+}
+
+.icon-password {
+    -qsc-icon: \f507;
+}
+
+.icon-pause {
+    -qsc-icon: \f509;
+}
+
+.icon-pencil {
+    -qsc-icon: \f513;
+}
+
+.icon-piano {
+    -qsc-icon: \f523;
+}
+
+.icon-pin {
+    -qsc-icon: \f541;
+}
+
+.icon-pip {
+    -qsc-icon: \f447;
+}
+
+.icon-placeholder {
+    -qsc-icon: \f529;
+}
+
+.icon-play {
+    -qsc-icon: \f52b;
+}
+
+.icon-playlist {
+    -qsc-icon: \f52d;
+}
+
+.icon-playpause {
+    -qsc-icon: \f52b;
+}
+
+.icon-playpause:value(1) {
+    -qsc-icon: \f509;
+}
+
+.icon-plug {
+    -qsc-icon: \f52e;
+}
+
+.icon-plus {
+    -qsc-icon: \f531;
+}
+
+.icon-podcast {
+    -qsc-icon: \f24e;
+}
+
+.icon-pound {
+    -qsc-icon: \f45b;
+}
+
+.icon-power {
+    -qsc-icon: \f538;
+}
+
+.icon-presentation {
+    -qsc-icon: \f53b;
+}
+
+.icon-previous {
+    -qsc-icon: \f255;
+}
+
+.icon-privacy {
+    -qsc-icon: \f4b8;
+}
+
+.icon-privacy:value(1) {
+    -qsc-icon: \f4b9;
+}
+
+.icon-projector {
+    -qsc-icon: \f623;
+}
+
+.icon-qr-code {
+    -qsc-icon: \f546;
+}
+
+.icon-radio {
+    -qsc-icon: \f54b;
+}
+
+.icon-radio-button {
+    -qsc-icon: \f343;
+}
+
+.icon-radio-button:value(1) {
+    -qsc-icon: \f54c;
+}
+
+.icon-rainbow {
+    -qsc-icon: \f54e;
+}
+
+.icon-record {
+    -qsc-icon: \f628;
+}
+
+.icon-repeat {
+    -qsc-icon: \f554;
+}
+
+.icon-reset {
+    -qsc-icon: \f274;
+}
+
+.icon-restart {
+    -qsc-icon: \f268;
+}
+
+.icon-return {
+    -qsc-icon: \f47e;
+}
+
+.icon-rewind {
+    -qsc-icon: \f556;
+}
+
+.icon-room {
+    -qsc-icon: \f3a7;
+}
+
+.icon-routing {
+    -qsc-icon: \f56e;
+}
+
+.icon-save {
+    -qsc-icon: \f406;
+}
+
+.icon-scales {
+    -qsc-icon: \f560;
+}
+
+.icon-school {
+    -qsc-icon: \f449;
+}
+
+.icon-screen {
+    -qsc-icon: \f540;
+}
+
+.icon-search {
+    -qsc-icon: \f4a8;
+}
+
+.icon-select {
+    -qsc-icon: \f642;
+}
+
+.icon-select:value(1) {
+    -qsc-icon: \f33e;
+}
+
+.icon-selfview {
+    -qsc-icon: \f61d;
+}
+
+.icon-settings {
+    -qsc-icon: \f615;
+}
+
+.icon-setup {
+    -qsc-icon: \f423;
+}
+
+.icon-shades {
+    -qsc-icon: \f53f;
+}
+
+.icon-shield {
+    -qsc-icon: \f56f;
+}
+
+.icon-shuffle {
+    -qsc-icon: \f57d;
+}
+
+.icon-sidebar {
+    -qsc-icon: \f580;
+}
+
+.icon-skip-next {
+    -qsc-icon: \f588;
+}
+
+.icon-skip-prev {
+    -qsc-icon: \f586;
+}
+
+.icon-sliders {
+    -qsc-icon: \f58c;
+}
+
+.icon-sources {
+    -qsc-icon: \f4c3;
+}
+
+.icon-spinner {
+    -qsc-icon: \f5a7;
+}
+
+.icon-standalone {
+    -qsc-icon: \f44b;
+}
+
+.icon-star {
+    -qsc-icon: \f5b4;
+}
+
+.icon-start {
+    -qsc-icon: \f52b;
+}
+
+.icon-stop {
+    -qsc-icon: \f5b8;
+}
+
+.icon-stream {
+    -qsc-icon: \f2f5;
+}
+
+.icon-sunnies {
+    -qsc-icon: \f5c3;
+}
+
+.icon-tablet {
+    -qsc-icon: \f7af;
+}
+
+.icon-teams {
+    -qsc-icon: \f4bd;
+}
+
+.icon-timer {
+    -qsc-icon: \f5f3;
+}
+
+.icon-toggle {
+    -qsc-icon: \f5f4;
+}
+
+.icon-toggle:value(1) {
+    -qsc-icon: \f5f5;
+}
+
+.icon-trash {
+    -qsc-icon: \f602;
+}
+
+.icon-tv {
+    -qsc-icon: \f5d1;
+}
+
+.icon-under-construction {
+    -qsc-ion: \f2c2;
+}
+
+.icon-undo {
+    -qsc-icon: \f29c;
+}
+
+.icon-upload {
+    -qsc-icon: \f612;
+}
+
+.icon-video {
+    -qsc-icon: \f3ee;
+}
+
+.icon-video-call {
+    -qsc-icon: \f620;
+}
+
+.icon-video-camera {
+    -qsc-icon: \f625;
+}
+
+.icon-video-privacy {
+    -qsc-icon: \f625;
+}
+
+.icon-video-privacy:value(1) {
+    -qsc-icon: \f626;
+}
+
+.icon-volume-down {
+    -qsc-icon: \f59e;
+}
+
+.icon-volume-mute {
+    -qsc-icon: \f59e;
+}
+
+.icon-volume-mute:value(1) {
+    -qsc-icon: \f5a6;
+}
+
+.icon-volume-up {
+    -qsc-icon: \f59d;
+}
+
+.icon-webcam {
+    -qsc-icon: \f635;
+}
+
+.icon-wrench {
+    -qsc-icon: \f641;
+}
+
+.icon-zoom {
+    -qsc-icon: \f625;
+}
+
+.icon-zoom-in {
+    -qsc-icon: \f4aa;
+}
+
+.icon-zoom-out {
+    -qsc-icon: \f4a9;
+}
+*/
+
+/* 
+CSS Copyright 2025 QSC
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), 
+to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS 
+IN THE SOFTWARE. 
+
+*/
+
+/*
+
+Icons Copyright (c) 2020 Phosphor Icons
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+*/

@@ -1,6 +1,15 @@
 # RoomCustomisationAngularQsysUi
 
+This project is an HTML user interface for the Q-SYS [Room Customisation Tutorial](https://github.com/Q-SYS-Communities-for-Developers/System-Customization) example.
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.8.
+
+## Dependecies
+
+```bash
+npm update
+npm install @q-sys/qrwc
+```
 
 ## Development server
 
@@ -56,4 +65,36 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 
 ## Additional Resources
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Comm Reference](https://angular.dev/tools/cli) page.
+
+## Requirements
+
+1. Download [Room Customization Reference.qsys](https://github.com/Q-SYS-Communities-for-Developers/System-Customization/blob/main/Room%20Customization%20Reference.qsys) and open using [Q-SYS Designer](https://www.qsys.com/resources/software-and-firmware/q-sys-designer-software/) v10.0.1 or later.
+2. Save the qsys file to update it to v10.0 or later to use a version that supports websockets.
+3. Load the file onto a Qsys core.
+4. Browse to the embedded web page on the core, select Network > Services, then the 'Management' tab, and enable 'Q-SYS Remote WebSocket Control'
+5. Using Qsys administrator on the running Qsys core make sure that there is no QRC PIN.
+   1. Select Users > Guest > Access Permissions > External Control Protocol > Yes.
+   2. This should not be necessary when QRWC is no longer BETA.
+6. Enter the address of the core or the address of the PC running emulation mode into either:
+   1. app.ts
+    `readonly coreIpAddress = '<core-address>';`
+   2. using query parameters in the host url.
+    `http://<host-address>?host=<core-address>`
+
+## Authors
+
+* Rod Driscoll <rod@theavitgroup.com.au>
+
+## Version History
+
+* 1.0
+  * Initial release
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE.md file for details
+
+## Acknowledgements
+
+* Thank you to Hope Roth <https://github.com/qsc-hoperoth> and [Q-SYS](www.qsys.com) for creating the Room Customisation Demo project.
