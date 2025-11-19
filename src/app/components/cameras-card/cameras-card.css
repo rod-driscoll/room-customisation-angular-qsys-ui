@@ -1,8 +1,11 @@
 .cameras-card {
   padding: 2rem;
-  max-width: 800px;
-  margin: 2rem auto;
+  /* max-width: 800px; */
+  /* margin: 2rem auto; */
+  width: 100vw;
+  height: 100vh;
 }
+
 
 .camera-controls-grid {
   display: grid;

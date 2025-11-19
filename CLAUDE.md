@@ -153,6 +153,7 @@ Q-SYS component names referenced in code:
 - `Status` - Core status component
 - `Room Controls` - Room control component
 - `UCI Text Helper` - Locale text component
+- `UCI Text Helper` - Locale text component
 
 These must match the component names in the Q-SYS Designer file.
 

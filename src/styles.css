@@ -133,6 +133,7 @@ header {
     text-align: left;
     font-family: var(--MyFont);
     font-size: 18 vmin;
+    /* font-size: 30px; */
 }
 
 page {
@@ -243,6 +244,7 @@ textfield {
     background-color: var(--LightColor);
     border-color: var(--LightGreyColor);
     border-width: var(--BorderDecoration);
+    border: #0076bf 3px solid;
 }
 
 .bottombar-bg {
@@ -314,7 +316,8 @@ textfield {
     font-style: bold;
     background-color: transparent;
     border: 0px transparent;
-    font-size: 48vmin;
+    font-size: 10vmin;
+    /* font-size: 48vmin; */
     text-align: center;
     padding: 10px;
     color: var(--Color5);
@@ -344,7 +347,7 @@ textfield {
     /* -qsc-font-style: semibold; */
     background-color: transparent;
     border: 0px transparent;
-    font-size: 4vw;
+    /* font-size: 12vmin; */
     text-align: left;
     padding: 10px;
     color: var(--DarkGreyColor);

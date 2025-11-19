@@ -2,13 +2,12 @@
   width: 100vw;
   height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
   background-color: var(--DarkGreyColor);
   overflow: hidden;
 }
 
-/* 16:9 aspect ratio container */
+/* 16:9 aspect ratio container
 .app-container > * {
   width: 100%;
   height: 100%;
@@ -16,7 +15,7 @@
   max-height: 100vh;
 }
 
-/* Maintain 16:9 aspect ratio */
+ Maintain 16:9 aspect ratio 
 @media (min-aspect-ratio: 16/9) {
   .app-container > * {
     height: 100vh;
@@ -30,3 +29,4 @@
     height: calc(100vw * 9 / 16);
   }
 }
+*/

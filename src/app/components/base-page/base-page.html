@@ -1,52 +1,44 @@
-<div class="base-page bg-light">
-  <!-- Top Left: Language Selector -->
-  <div class="top-left">
-    <app-language-selector></app-language-selector>
-  </div>
+<div class="base-page">
+  <div class="top">
+    <!-- Top Left: Language Selector -->
+    <div class="top-left">
+      <app-language-selector></app-language-selector>
+    </div>
 
-  <!-- Top Center: Current Page Name -->
-  <div class="top-center">
-    <div class="txt-page-name">{{ getCurrentPageName() }}</div>
-  </div>
+    <!-- Top Center: Current Page Name -->
+    <div class="top-center">
+      <div class="txt-page-name">{{ getCurrentPageName() }}</div>
+    </div>
 
-  <!-- Top Right: Navigation Icons -->
-  <div class="top-right">
-    <button
-      class="nav-icon button-transparent"
-      [class.active]="currentPage() === 'home'"
-      (click)="navigateToPage('home')">
-      <span class="material-icons">home</span>
-    </button>
+    <!-- Top Right: Navigation Icons -->
+    <div class="top-right">
+      <button
+        class="nav-icon button-transparent"
+        [class.active]="currentPage() === 'home'"
+        (click)="navigateToPage('home')">
+        <span class="material-icons">home</span>
+      </button>
 
-    <button
-      class="nav-icon button-transparent"
-      [class.active]="currentPage() === 'cameras'"
-      (click)="navigateToPage('cameras')">
-      <span class="material-icons">videocam</span>
-    </button>
+      <button
+        class="nav-icon button-transparent"
+        [class.active]="currentPage() === 'cameras'"
+        (click)="navigateToPage('cameras')">
+        <span class="material-icons">videocam</span>
+      </button>
 
-    <button
-      class="nav-icon button-transparent"
-      [class.active]="currentPage() === 'help'"
-      (click)="navigateToPage('help')">
-      <span class="material-icons">help</span>
-    </button>
+      <button
+        class="nav-icon button-transparent"
+        [class.active]="currentPage() === 'help'"
+        (click)="navigateToPage('help')">
+        <span class="material-icons">help</span>
+      </button>
 
-    <button
-      class="nav-icon button-transparent power-icon"
-      (click)="togglePowerCard()">
-      <span class="material-icons">power_settings_new</span>
-    </button>
-  </div>
-
-  <!-- Bottom Left: Room Name -->
-  <div class="bottom-left">
-    <div class="txt-room-name">{{ roomName() }}</div>
-  </div>
-
-  <!-- Bottom Right: Volume Control -->
-  <div class="bottom-right">
-    <app-volume-control></app-volume-control>
+      <button
+        class="nav-icon button-transparent power-icon"
+        (click)="togglePowerCard()">
+        <span class="material-icons">power_settings_new</span>
+      </button>
+    </div>
   </div>
 
   <!-- Main Content Area: Cards -->
@@ -60,6 +52,18 @@
     @if (currentPage() === 'help') {
       <app-help-card></app-help-card>
     }
+  </div>
+  
+  <div class="bottom">
+    <!-- Bottom Left: Room Name -->
+    <div class="bottom-left">
+      <div class="txt-room-name">{{ roomName() }}</div>
+    </div>
+
+    <!-- Bottom Right: Volume Control -->
+    <div class="bottom-right">
+      <app-volume-control></app-volume-control>
+    </div>
   </div>
 
   <!-- Power Card Overlay -->

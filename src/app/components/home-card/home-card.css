@@ -1,15 +1,16 @@
 .home-card {
   padding: 2rem 3rem;
-  max-width: 900px;
-  width: 100%;
-  margin: 0 auto;
+  width: 100vw;
+  height: 100vh;
 }
 
 .source-buttons {
   display: flex;
-  gap: 3rem;
+  flex-direction: row;
+  gap: 1rem;
   justify-content: center;
-  align-items: flex-start;
+  border: yellowgreen 2px solid;
+  flex-wrap: wrap;
 }
 
 .source-item {
@@ -17,11 +18,13 @@
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  border: orange 2px solid;
+  flex-shrink: 0; /* Prevent items from shrinking */
 }
 
 .source-button {
-  width: 180px;
-  height: 180px;
+  width: 8rem;
+  height: 8rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -41,4 +44,10 @@
 
 .source-button.selected .material-icons {
   color: var(--LightColor);
+}
+
+.source-item .txt-source-name {
+  font-size: 1.3rem;
+  padding: 0.5rem;
+  text-align: center;
 }
