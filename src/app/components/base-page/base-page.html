@@ -3,7 +3,23 @@
   @if (!qrwc.initialised()) {
     <div class="connection-notice">
       <span class="material-icons">cloud_off</span>
-      <span>Not connected to Q-SYS Core - Attempting to reconnect...</span>
+      <span>Not connected to Q-SYS Core at {{ qrwc.connectionIpAddress() }} - Attempting to reconnect...</span>
+    </div>
+  }
+
+  <!-- Missing Components Warning -->
+  @if (qrwc.initialised() && qrwc.missingComponents().length > 0) {
+    <div class="missing-components-notice">
+      <span class="material-icons">warning</span>
+      <div>
+        <strong>Missing Q-SYS Components:</strong>
+        <ul>
+          @for (component of qrwc.missingComponents(); track component) {
+            <li>{{ component }}</li>
+          }
+        </ul>
+        <span>Please check your Q-SYS design file includes these components.</span>
+      </div>
     </div>
   }
 

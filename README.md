@@ -88,7 +88,9 @@ To make the project work the following needs to be done to the Q-SYS design afte
 
 1. Change the code script access of the USB camera object to 'External' or 'All'.
 2. Change the code script access of the 'UCI Text Helper' object to 'All'.
-3. I did not test on a NV32 so the HDMI IO Core was not available, therefore I added a router and gave it External Script Access ID 'HDMISourceSelect_1'
+3. Change the code script access of the 'USB Video Bridge Core' object to 'All'.
+4. Add a router and give it External Script Access ID 'HDMISourceSelect_1'
+   1. I did not test on a NV32 so the HDMI IO Core was not available, therefore I added the router which is more portable
 
 ## Authors
 

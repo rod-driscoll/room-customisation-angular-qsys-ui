@@ -12,12 +12,32 @@ export class QrwcAngularService {
   // Store the QRWC connection instance (private so only this service can access it).
   private qrwc?: Qrwc;
 
+  // List of required Q-SYS components for the application
+  public readonly requiredComponents = [
+    //'Status',             // System status component
+    'Room Controls',        // Main room control component
+    'UCI Text Helper',      // UCI locale text helper
+    'USB Video Bridge Core',// camera control component
+    'HDMISourceSelect_1',   // Home / HDMI Source Select component
+  ];
+
   // Signal to track if we're connected to Q-SYS (components can subscribe to this)
   public readonly initialised = signal(false);
+
+  // Signal to store the current connection IP address
+  public readonly connectionIpAddress = signal<string>('');
 
   // Plain object containing all Q-SYS components discovered from the Core
   // (not a signal because we don't want to react to individual control value changes)
   public readonly components = signal<Record<string, Component<string> | undefined>>({});
+
+  // Computed signal that returns list of missing required components
+  public readonly missingComponents = computed(() => {
+    if (!this.initialised()) return [];
+
+    const available = this.components();
+    return this.requiredComponents.filter(name => !available[name]);
+  });
 
   constructor() {}
 
@@ -33,6 +53,9 @@ export class QrwcAngularService {
 
     console.log('🔄 QRWC - Setting up connection...');
 
+    // Store the connection IP address
+    this.connectionIpAddress.set(ipAddress);
+
     // Create a WebSocket connection to the Q-SYS Core's public API
     const socket = new WebSocket(`ws://${ipAddress}/qrc-public-api/v0`);
 
@@ -47,8 +70,7 @@ export class QrwcAngularService {
         pollingInterval: pollingInterval,
         // Optional filter to only include components we care about.
         componentFilter: (componentState) => {
-          //return ['Status','Room Controls','UCI Text Helper','HDMISourceSelect_1'].includes(componentState.Name);
-          return ['Status','Room Controls','UCI Text Helper','HDMISourceSelect_1'].includes(componentState.Name);
+          return this.requiredComponents.includes(componentState.Name);
         }
       });
     } catch (err) {

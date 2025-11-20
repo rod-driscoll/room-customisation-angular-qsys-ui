@@ -8,7 +8,13 @@
     </span>
   </button>
 
-  <button class="volume-btn button-transparent" (click)="volumeDown()">
+  <button
+    class="volume-btn button-transparent"
+    (mousedown)="volumeDownStart()"
+    (mouseup)="volumeDownEnd()"
+    (mouseleave)="volumeDownEnd()"
+    (touchstart)="volumeDownStart()"
+    (touchend)="volumeDownEnd()">
     <span class="material-icons">remove</span>
   </button>
 
@@ -31,7 +37,13 @@
     <span class="volume-label" [style.left.%]="getLabelPosition()">{{ Math.round(sliderValue()) }}</span>
   </div>
 
-  <button class="volume-btn button-transparent" (click)="volumeUp()">
+  <button
+    class="volume-btn button-transparent"
+    (mousedown)="volumeUpStart()"
+    (mouseup)="volumeUpEnd()"
+    (mouseleave)="volumeUpEnd()"
+    (touchstart)="volumeUpStart()"
+    (touchend)="volumeUpEnd()">
     <span class="material-icons">add</span>
   </button>
 </div>

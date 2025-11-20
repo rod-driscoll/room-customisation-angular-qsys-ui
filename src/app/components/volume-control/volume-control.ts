@@ -105,26 +105,44 @@ export class VolumeControl {
     });
   }
 
-  volumeUp(): void {
+  volumeUpStart(): void {
     const component = this.qrwc.components()?.['Room Controls'];
     if (!component) return;
 
-    const control = component.controls['VolumeUpDown[1]'];
+    const control = component.controls['VolumeUpDown 1'];
     if (!control) return;
 
-    // Trigger volume up
     control.update(true);
   }
 
-  volumeDown(): void {
+  volumeUpEnd(): void {
     const component = this.qrwc.components()?.['Room Controls'];
     if (!component) return;
 
-    const control = component.controls['VolumeUpDown[2]'];
+    const control = component.controls['VolumeUpDown 1'];
     if (!control) return;
 
-    // Trigger volume down
+    control.update(false);
+  }
+
+  volumeDownStart(): void {
+    const component = this.qrwc.components()?.['Room Controls'];
+    if (!component) return;
+
+    const control = component.controls['VolumeUpDown 2'];
+    if (!control) return;
+
     control.update(true);
+  }
+
+  volumeDownEnd(): void {
+    const component = this.qrwc.components()?.['Room Controls'];
+    if (!component) return;
+
+    const control = component.controls['VolumeUpDown 2'];
+    if (!control) return;
+
+    control.update(false);
   }
 
   toggleMute(): void {
