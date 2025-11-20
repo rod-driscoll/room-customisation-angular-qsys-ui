@@ -9,6 +9,14 @@
   position: relative;
 }
 
+.splash-language-selector {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 10;
+  cursor: default;
+}
+
 .splash-logo {
   display: flex;
   align-items: center;
@@ -36,5 +44,5 @@
 .splash-prompt {
   margin: 0;
   padding: 1rem 2rem;
-  border: red 1px solid;
+  /* border: red 1px solid; */
 }

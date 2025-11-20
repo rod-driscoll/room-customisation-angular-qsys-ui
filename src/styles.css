@@ -7,7 +7,6 @@ v1.1 Rod Driscoll<rod@theavitgroup.com.au>
 - Modified to work with Angular projects
 - changed assets path for fonts and logo
 - commented out custom -qsc specific properties
-    - TODO: Uncomment and replace -qsc specific properties with standard CSS properties where possible
 */
 
 @font-face {
@@ -36,7 +35,11 @@ v1.1 Rod Driscoll<rod@theavitgroup.com.au>
     --GoColor: #719e1b;
     --BorderDecoration: 3px;
     --BorderRadius: 6px;
-    --MyFont: "Open Sans";
+    --MyFont: "Phosphor";
+}
+
+body {
+    font-family: "Phosphor", sans-serif;
 }
 
 button {
@@ -52,7 +55,7 @@ button {
 
 button:value(1) {
     background-color: var(--Color4);
-    -qsc-icon-color: var(--LightColor);
+    /* -qsc-icon-color: var(--LightColor); */
     color: var(--LightColor);
 }
 
@@ -80,15 +83,15 @@ fader {
     padding: 2px;
 }
 
-fader.vertical {
-    /* -qsc-fader-cap-width: 20vw;
-    -qsc-fader-cap-height: 20vw; */
+/* fader.vertical {
+    -qsc-fader-cap-width: 20vw;
+    -qsc-fader-cap-height: 20vw;
 }
 
 fader.horizontal {
-    /* -qsc-fader-cap-width: 20vh;
-    -qsc-fader-cap-height: 20vh; */
-}
+    -qsc-fader-cap-width: 20vh;
+    -qsc-fader-cap-height: 20vh;
+} */
 
 .fader-slot {
     background-color: var(--DarkGreyColor);

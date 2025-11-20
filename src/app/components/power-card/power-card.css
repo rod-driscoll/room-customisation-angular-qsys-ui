@@ -6,27 +6,34 @@
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
+  padding-right: 2rem;
   z-index: 2000;
 }
 
+.power-language-selector {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 2001;
+}
+
 .power-card {
-  padding: 2.5rem 3rem;
-  max-width: 480px;
-  min-width: 400px;
+  padding: 3rem 3.5rem;
+  max-width: 500px;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2rem;
   border-radius: var(--BorderRadius);
 }
 
 .power-prompt {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   color: var(--DarkColor);
   text-align: center;
-  line-height: 1.4;
-  margin-bottom: 1rem;
-  font-weight: normal;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
 }
 
 .power-buttons {
@@ -39,11 +46,21 @@
 .power-yes-btn,
 .power-no-btn {
   width: 100%;
-  padding: 1.2rem 2rem;
-  font-size: 1.3rem;
+  padding: 1.5rem 2rem;
+  font-size: 1.4rem;
   cursor: pointer;
   border: none;
   font-weight: 600;
+  border-radius: var(--BorderRadius);
+  transition: all 0.2s ease;
+}
+
+.power-yes-btn:hover {
+  transform: scale(1.02);
+}
+
+.power-no-btn:hover {
+  transform: scale(1.02);
 }
 
 .power-yes-btn {

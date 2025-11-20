@@ -1,10 +1,11 @@
 import { Component, inject, effect, signal, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { QrwcAngularService } from '../../services/qrwc-angular-service';
+import { LanguageSelector } from '../language-selector/language-selector';
 
 @Component({
   selector: 'app-power-card',
-  imports: [CommonModule],
+  imports: [CommonModule, LanguageSelector],
   templateUrl: './power-card.html',
   styleUrl: './power-card.css',
 })

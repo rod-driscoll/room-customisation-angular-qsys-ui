@@ -1,4 +1,8 @@
 <div class="splash-container button-splash" (click)="handleClick()">
+  <div class="splash-language-selector" (click)="$event.stopPropagation()">
+    <app-language-selector></app-language-selector>
+  </div>
+
   <div class="splash-logo">
     <img src="/assets/images/communities-logo.png" alt="Communities Logo" class="splash-logo-image" />
   </div>

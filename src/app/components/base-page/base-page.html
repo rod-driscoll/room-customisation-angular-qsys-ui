@@ -9,9 +9,11 @@
 
   <div class="top">
     <!-- Top Left: Language Selector -->
-    <div class="top-left">
-      <app-language-selector></app-language-selector>
-    </div>
+    @if (!showPowerCard()) {
+      <div class="top-left">
+        <app-language-selector></app-language-selector>
+      </div>
+    }
 
     <!-- Top Center: Current Page Name -->
     <div class="top-center">

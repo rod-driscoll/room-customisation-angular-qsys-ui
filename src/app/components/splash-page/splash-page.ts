@@ -1,9 +1,10 @@
 import { Component, inject, effect, signal, output } from '@angular/core';
 import { QrwcAngularService } from '../../services/qrwc-angular-service';
+import { LanguageSelector } from '../language-selector/language-selector';
 
 @Component({
   selector: 'app-splash-page',
-  imports: [],
+  imports: [LanguageSelector],
   templateUrl: './splash-page.html',
   styleUrl: './splash-page.css',
 })
