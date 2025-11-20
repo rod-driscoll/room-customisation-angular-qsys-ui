@@ -12,15 +12,24 @@
     <span class="material-icons">remove</span>
   </button>
 
-  <input
-    type="range"
-    class="volume-slider"
-    [value]="volumeLevel()"
-    (input)="onVolumeChange($event)"
-    min="0"
-    max="100"
-    step="1"
-  />
+  <div class="slider-container">
+    <input
+      #volumeSlider
+      type="range"
+      class="volume-slider"
+      [value]="sliderValue()"
+      [style.--volume-percent]="volumeLevel()"
+      (input)="onVolumeChange($event)"
+      (mousedown)="onSliderStart()"
+      (mouseup)="onSliderEnd()"
+      (touchstart)="onSliderStart()"
+      (touchend)="onSliderEnd()"
+      min="0"
+      max="100"
+      step="1"
+    />
+    <span class="volume-label" [style.left.%]="getLabelPosition()">{{ Math.round(sliderValue()) }}</span>
+  </div>
 
   <button class="volume-btn button-transparent" (click)="volumeUp()">
     <span class="material-icons">add</span>
