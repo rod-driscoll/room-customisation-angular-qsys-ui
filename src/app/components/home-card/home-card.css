@@ -1,7 +1,7 @@
 .home-card {
-  padding: 2rem 3rem;
-  width: 100vw;
-  height: 100vh;
+  padding: 1rem 0rem;
+  margin: 0, auto;
+  /* border: blueviolet 2px solid; */
 }
 
 .source-buttons {
@@ -9,8 +9,8 @@
   flex-direction: row;
   gap: 1rem;
   justify-content: center;
-  border: yellowgreen 2px solid;
   flex-wrap: wrap;
+  /* border: pink 2px solid; */
 }
 
 .source-item {
@@ -18,7 +18,6 @@
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  border: orange 2px solid;
   flex-shrink: 0; /* Prevent items from shrinking */
 }
 

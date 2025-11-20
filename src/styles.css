@@ -244,7 +244,6 @@ textfield {
     background-color: var(--LightColor);
     border-color: var(--LightGreyColor);
     border-width: var(--BorderDecoration);
-    border: #0076bf 3px solid;
 }
 
 .bottombar-bg {

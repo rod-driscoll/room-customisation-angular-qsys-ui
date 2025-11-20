@@ -1,11 +1,11 @@
 .help-card {
   padding: 2.5rem 3rem;
-  max-width: 750px;
-  margin: 1rem auto;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 2rem;
-  border-radius: var(--BorderRadius);
+  height: 70vh;
+  box-sizing: border-box;
 }
 
 .help-intro {
@@ -26,6 +26,8 @@
   grid-template-columns: auto 1fr;
   gap: 2rem;
   align-items: baseline;
+  /* border: pink 2px solid; */
+
 }
 
 .help-label {
@@ -33,9 +35,18 @@
   color: var(--DarkColor);
   font-size: 1.1rem;
   white-space: nowrap;
+  /* border: red 2px solid; */
 }
 
 .help-value {
   color: var(--DarkColor);
   font-size: 1.1rem;
+  /* border: yellow 2px solid; */
+}
+
+@media (max-width: 400px) {
+  .help-contact-row {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
 }

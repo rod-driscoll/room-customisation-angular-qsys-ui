@@ -1,4 +1,12 @@
 <div class="base-page">
+  <!-- Connection Status Notice -->
+  @if (!qrwc.initialised()) {
+    <div class="connection-notice">
+      <span class="material-icons">cloud_off</span>
+      <span>Not connected to Q-SYS Core - Attempting to reconnect...</span>
+    </div>
+  }
+
   <div class="top">
     <!-- Top Left: Language Selector -->
     <div class="top-left">
@@ -41,19 +49,25 @@
     </div>
   </div>
 
-  <!-- Main Content Area: Cards -->
-  <div class="main-content">
-    @if (currentPage() === 'home') {
-      <app-home-card></app-home-card>
-    }
-    @if (currentPage() === 'cameras') {
-      <app-cameras-card></app-cameras-card>
-    }
-    @if (currentPage() === 'help') {
-      <app-help-card></app-help-card>
-    }
+  <div class="middle">
+    <div class="left-spacer"></div>
+
+    <!-- Main Content Area: Cards -->
+    <div class="main-content">
+      @if (currentPage() === 'home') {
+        <app-home-card></app-home-card>
+      }
+      @if (currentPage() === 'cameras') {
+        <app-cameras-card></app-cameras-card>
+      }
+      @if (currentPage() === 'help') {
+        <app-help-card></app-help-card>
+      }
+    </div>
+
+    <div class="right-spacer"></div>
   </div>
-  
+
   <div class="bottom">
     <!-- Bottom Left: Room Name -->
     <div class="bottom-left">

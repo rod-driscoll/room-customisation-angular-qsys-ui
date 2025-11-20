@@ -4,30 +4,59 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background-color: var(--LightGreyColor);
+  background-color: var(--LightColor);
+}
+
+.connection-notice {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100vw;
+  padding: 0.5rem;
+  background-color: #ff6b6b;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  flex-shrink: 0;
+  z-index: 1000;
+}
+
+.connection-notice .material-icons {
+  font-size: 1.5rem;
 }
 
 .top {
   display: flex;
   width: 100vw;
   flex-shrink: 0;
-  border: red 2px solid;
+  background-color: var(--LightGreyColor);
+}
+.middle {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  background-color: var(--LightColor);
+  min-height: 0;
+}
+.bottom {
+  display: flex;
+  flex-shrink: 0;
+  width: 100vw;
+  padding-bottom: 1rem;
+  background-color: var(--LightGreyColor);
 }
 
 .top-left {
   /* border: orange 2px solid; */
 }
-
 .top-center {
-  border: yellow 2px solid;
   font-size: 2.5rem;
 }
-
 .top-right {
   display: flex;
   margin-left: auto; /* Pushes this item to the right */
   padding-right: 0.5rem;
-  border: orange 2px solid;
 }
 
 .nav-icon {
@@ -40,31 +69,35 @@
   background: transparent;
   border: none;
 }
-
 .nav-icon .material-icons {
   font-size: 3rem;
   color: var(--Color2);
 }
-
 .nav-icon.active .material-icons {
   color: var(--Color4);
 }
-
 .nav-icon.power-icon .material-icons {
   color: var(--StopColor);
 }
 
-.main-content {
-  overflow: hidden auto;  
-  display: flex;
-  justify-content: center;
-  border: yellow 2px solid;
+.left-spacer {
+  background-color: var(--LightGreyColor);
+  width: 2%;
+}
+.right-spacer {
+  background-color: var(--LightGreyColor);
+  width: 2%;
+  margin-left: auto; /* Pushes this item to the right */
 }
 
-.bottom { 
+.main-content {
   display: flex;
-  margin-top: auto; /* Pushes this item to the bottom */
-  width: 100vw;
+  flex-direction: column;
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  min-height: 0;
+  border: gold 2px solid;
 }
 
 .bottom-left {
