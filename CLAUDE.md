@@ -12,8 +12,23 @@ room-customisation-angular-qsys-ui/
 │   ├── app/
 │   │   ├── app.html
 │   │   ├── app.ts
+│   │   ├── components/
+│   │   │   ├── base-page/
+│   │   │   ├── cameras-card/
+│   │   │   ├── help-card/
+│   │   │   ├── home-card/
+│   │   │   ├── language-selector/
+│   │   │   ├── power-card/
+│   │   │   ├── splash-page/
+│   │   │   └── volume-control/
 │   │   └── services/
+│   │       ├── IQrwcControlState.ts
+│   │       ├── qrwc-angular-service.ts
+│   │       └── qrwc-control-binding.ts
 │   └── styles.css
+├── public/
+│   └── assets/
+│       └── images/
 ├── package.json
 ├── package-lock.json
 └── README.md
@@ -88,15 +103,55 @@ This application demonstrates integration with Q-SYS audio/video control systems
 **QrwcAngularService** (`src/app/services/qrwc-angular-service.ts`):
 
 - Singleton service (`providedIn: 'root'`) managing the QRWC connection
+- Maintains a list of `requiredComponents` that the application needs to function
 - Exposes signals for reactive connection state:
   - `initialised` - boolean signal tracking connection status
+  - `connectionIpAddress` - signal containing the current connection IP address
   - `components` - signal containing all discovered Q-SYS components
+  - `missingComponents` - computed signal that returns an array of missing required components
 - Provides `getComputedComponent(name)` helper for component-specific reactivity
 - Handles connection lifecycle: connect, disconnect, automatic reconnection on failure
+- Displays visual warnings when components are missing from the Q-SYS Core
+
+**QrwcControlBinding** (`src/app/services/qrwc-control-binding.ts`):
+
+- Helper class for creating reactive bindings to individual Q-SYS controls
+- Provides lazy computed properties for all control state properties:
+  - `value()`, `position()`, `string()`, `legend()`, `bool()`
+  - `min()`, `max()`, `values()`
+  - `state()` - full control state
+  - `connected()` - connection status
+- Provides methods to update control values: `setValue()`, `setPosition()`
+- Handles automatic subscription and cleanup
+- Supports logarithmic scaling for position-based controls
+- Single subscription per control, fully self-contained
 
 ### Q-SYS Control Binding Pattern
 
-Components that interact with Q-SYS follow this pattern:
+Components that interact with Q-SYS can use two approaches:
+
+**Approach 1: Using QrwcControlBinding (Recommended)**
+
+```typescript
+import { QrwcControlBinding } from '../services/qrwc-control-binding';
+
+// Create binding
+readonly gainControl = new QrwcControlBinding(
+  this.qrwc,
+  'MyComponent',
+  'gain',
+  true  // use logarithmic scaling
+);
+
+// Access values reactively
+const currentGain = this.gainControl.value();
+const isConnected = this.gainControl.connected();
+
+// Update value
+this.gainControl.setValue(-6);
+```
+
+**Approach 2: Manual Subscription with Effects**
 
 1. **Inject the service**: `readonly qrwc = inject(QrwcAngularService);`
 2. **Create signals for control state**: `readonly mute = signal(false);`
@@ -148,14 +203,14 @@ The [Room Customization Reference.qsys](https://github.com/Q-SYS-Communities-for
 
 ### Component Naming
 
-Q-SYS component names referenced in code:
+Q-SYS component names referenced in code (defined in `QrwcAngularService.requiredComponents`):
 
-- `Status` - Core status component
-- `Room Controls` - Room control component
-- `UCI Text Helper` - Locale text component
-- `UCI Text Helper` - Locale text component
+- `Room Controls` - Main room control component (power, volume, mute controls)
+- `UCI Text Helper` - UCI locale text helper for all UI text and language selection
+- `USB Video Bridge Core` - Camera control component
+- `HDMISourceSelect_1` - Home page HDMI source selection component
 
-These must match the component names in the Q-SYS Designer file.
+These must match the component names in the Q-SYS Designer file. If any component is missing, the application will display a warning banner listing the missing components.
 
 ### Angular Signals and Reactivity
 
@@ -165,12 +220,48 @@ The application uses Angular's modern signals API for reactive state management.
 - Use `computed()` for derived values
 - Use `effect()` to react to signal changes and set up Q-SYS subscriptions
 
+### Error Handling and Diagnostics
+
+The application provides real-time visual feedback for connection and component issues:
+
+**Connection Status:**
+- Red banner displayed when not connected to Q-SYS Core
+- Shows the full WebSocket URL being attempted (e.g., `ws://127.0.0.1/qrc-public-api/v0`)
+- Displays "Attempting to reconnect..." message
+- Automatic reconnection every 5 seconds
+
+**Missing Components Warning:**
+- Orange warning banner displayed when connected but required components are missing
+- Lists all missing component names in a bulleted list
+- Includes helpful message to check the Q-SYS design file
+- Only appears when connected (to avoid confusion during connection attempts)
+
 ### WebSocket Connection Details
 
 - Protocol: WebSocket (ws://)
 - Endpoint: `/qrc-public-api/v0`
 - Polling interval: Configurable (default 200ms)
 - Automatic reconnection on disconnect
+- Connection status tracked via `initialised` signal
+- Connection IP tracked via `connectionIpAddress` signal
+
+### Application Components
+
+**Main Pages:**
+- `splash-page` - Initial loading screen with logo and splash text
+- `base-page` - Main application container with navigation, room name, and card display
+
+**UI Cards (displayed on base-page):**
+- `home-card` - HDMI source selection buttons (3 sources)
+- `cameras-card` - USB camera control buttons (pan, tilt, zoom)
+- `help-card` - Help text and instructions for the room
+- `power-card` - System power off confirmation dialog
+
+**Reusable Components:**
+- `language-selector` - Language selection dropdown (top-left of all pages)
+- `volume-control` - Volume slider with mute button and +/- controls (bottom-right)
+
+Each component is a standalone Angular component with its own `.ts`, `.html`, and `.css` files.
 
 ## Notes for AI Assistants
 
